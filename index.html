@@ -53,7 +53,7 @@
             color: black;
         }
         
-        #message{
+        #rarity{
             font-size: 1.2rem;
             color: #555;
             margin-bottom: 20px;
@@ -81,7 +81,7 @@
         <h1>おみくじ</h1>
         <p>今年の運勢は～？</p>
         <div id="result">？？？</div>
-        <div id="message"></div>
+        <div id="rarity"></div>
         <button id = "drawButton">おみくじを引く</button>
     </div>
 
@@ -89,17 +89,17 @@
         // 要素の取得
         const res = document.getElementById('result');
         const btn = document.getElementById('drawButton');
-        const msg = document.getElementById('message');
+        const msg = document.getElementById('rarity');
 
         // おみくじの内容とその確率
         const kakuritu =[
-                {name: "スーパー吉", weight: 5, mess: "排出確立 5%"},
-                {name: "ウルトラ大吉", weight: 5, mess: "排出確立 5%"},
-                {name: "大吉", weight: 25, mess: "排出確立 25%"},
-                {name: "中吉", weight: 20, mess: "排出確立 20%"},
-                {name: "吉", weight: 35, mess: "排出確立 35%"},
-                {name: "凶", weight: 9, mess: "排出確立 9%"},
-                {name: "大凶", weight: 1}
+                {name: "スーパー吉", weight: 5, mess: "レア度 ★★★★★"},
+                {name: "ウルトラ大吉", weight: 5, mess: "レア度 ★★★★☆"},
+                {name: "大吉", weight: 25, mess: "レア度 ★★★☆☆"},
+                {name: "中吉", weight: 20, mess: "レア度 ★★☆☆☆"},
+                {name: "吉", weight: 35, mess: "レア度 ★☆☆☆☆"},
+                {name: "凶", weight: 9, mess: "レア度 ★★★★☆"},
+                {name: "大凶", weight: 1, mess: "レア度 ★★★★★"}
                 
             ];
 
