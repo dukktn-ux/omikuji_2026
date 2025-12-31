@@ -5,24 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>祝！ 2026</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 
     <!-- 要素の設定 -->
     <style>
-        body { font-family: "DotGothic16", sans-serif; text-align: center; background-color: #f4f4f4; padding: 50px 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
-        h1 { color: black; }
-        #result { font-size: 3rem; font-weight: bold; margin: 20px 0; color: black; }
-        #message { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
-        button { font-family: "DotGothic16", sans-serif; background: black; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; }
-        button:active { background: black; }
+        body{
+             font-family: "DotGothic16", sans-serif;
+             text-align: center;
+             background-color: #f4f4f4;
+             padding: 50px 20px;
+        }
+
+        /* .~で~のみ見た目の適用 */
+
+        :root {
+            --primary-red: black;
+            --gold: #d4af37;
+            --paper: white;
+        }
+
+        .omikuji-container {
+            background: var(--paper);
+            max-width: 350px;
+            margin: auto;
+            padding: 40px 20px;
+            border: 8px double var(--primary-red);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1{
+            color: black;
+        }
+        
+        /*#はid = "x"見たいな時に使う*/
+        #result{
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: black;
+        }
+        
+        #message{
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        button{
+            font-family: "DotGothic16", sans-serif;
+            background: black;
+            color: white; border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        /*:は特定の状態*/
+        button:active{
+            background: black;
+        }
+
     </style>
 </head>
 <body>
-    <div class="card">
+    <div class="omikuji-container">
         <h1>おみくじ</h1>
         <p>今年の運勢は～？</p>
         <div id="result">？？？</div>
