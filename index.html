@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- メタ情報（人から見えない）。 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>無料おみくじアプリ</title>
+    <title>祝！ 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+    <!-- 要素の設定 -->
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; padding: 50px 20px; }
+        body { font-family: "DotGothic16", sans-serif; text-align: center; background-color: #f4f4f4; padding: 50px 20px; }
         .card { background: white; padding: 30px; border-radius: 15px; shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
-        h1 { color: #d32f2f; }
-        #result { font-size: 2rem; font-weight: bold; margin: 20px 0; color: #333; }
-        button { background: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; }
-        button:active { background: #b71c1c; }
+        h1 { color: black; }
+        #result { font-size: 3rem; font-weight: bold; margin: 20px 0; color: black; }
+        button { font-family: "DotGothic16", sans-serif; background: black; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; }
+        button:active { background: black; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>開運おみくじ</h1>
-        <p>今日の運勢を占ってみよう！</p>
+        <h1>おみくじ</h1>
+        <h2>〜2026年の運勢〜</h2>
         <div id="result">？？？</div>
-        <button onclick="drawOmikuji()">おみくじを引く</button>
+        <button id = "drawButton">ここをクリックして、運勢を占う</button>
     </div>
 
     <script>
-        function drawOmikuji() {
-            const fortunes = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
-            // 乱数を使って結果を選択
-            const index = Math.floor(Math.random() * fortunes.length);
-            document.getElementById("result").innerText = fortunes[index];
+        // 要素の取得
+        const res = document.getElementById('result');
+        const btn = document.getElementById('drawButton');
+
+        // おみくじの内容とその確率
+        const kakuritu =[
+                {name: "スーパー吉", weight: 5},
+                {name: "ウルトラ大吉", weight: 5},
+                {name: "大吉", weight: 25},
+                {name: "中吉", weight: 20},
+                {name: "吉", weight: 35},
+                {name: "凶", weight: 9},
+                {name: "大凶", weight: 1}
+                
+            ];
+
+        // ボタンがクリックされたときの処理
+        btn.addEventListener('click', () => {
+        // 2. 重みの合計
+        const totalWeight = kakuritu.reduce((sum, item) => sum + item.weight, 0);
+
+        // 重みの合計値以下でランダムな数字を選ぶ
+        let randomNum = Math.random() * totalWeight;
+
+        // 4. 選ばれた数字がどの範囲に入っているか判定する
+        let selectedResult = "";
+        for (const item of kakuritu) {
+            if (randomNum < item.weight) {
+                selectedResult = item.name;
+                break;
+            }
+            randomNum -= item.weight;
         }
+
+        // 画面に表示
+        res.textContent = selectedResult;});
+
     </script>
 </body>
 </html>
