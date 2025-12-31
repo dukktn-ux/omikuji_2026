@@ -16,6 +16,7 @@
         .card { background: white; padding: 30px; border-radius: 15px; shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
         h1 { color: black; }
         #result { font-size: 3rem; font-weight: bold; margin: 20px 0; color: black; }
+        #message { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
         button { font-family: "DotGothic16", sans-serif; background: black; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 30px; cursor: pointer; }
         button:active { background: black; }
     </style>
@@ -23,24 +24,26 @@
 <body>
     <div class="card">
         <h1>おみくじ</h1>
-        <h2>〜2026年の運勢〜</h2>
+        <p>今年の運勢は～？</p>
         <div id="result">？？？</div>
-        <button id = "drawButton">ここをクリックして、運勢を占う</button>
+        <div id="message"></div>
+        <button id = "drawButton">おみくじを引く</button>
     </div>
 
     <script>
         // 要素の取得
         const res = document.getElementById('result');
         const btn = document.getElementById('drawButton');
+        const msg = document.getElementById('message');
 
         // おみくじの内容とその確率
         const kakuritu =[
-                {name: "スーパー吉", weight: 5},
-                {name: "ウルトラ大吉", weight: 5},
-                {name: "大吉", weight: 25},
-                {name: "中吉", weight: 20},
-                {name: "吉", weight: 35},
-                {name: "凶", weight: 9},
+                {name: "スーパー吉", weight: 5, mess: "排出確立 5%"},
+                {name: "ウルトラ大吉", weight: 5, mess: "排出確立 5%"},
+                {name: "大吉", weight: 25, mess: "排出確立 25%"},
+                {name: "中吉", weight: 20, mess: "排出確立 20%"},
+                {name: "吉", weight: 35, mess: "排出確立 35%"},
+                {name: "凶", weight: 9, mess: "排出確立 9%"},
                 {name: "大凶", weight: 1}
                 
             ];
@@ -55,17 +58,20 @@
 
         // 4. 選ばれた数字がどの範囲に入っているか判定する
         let selectedResult = "";
+        let message = "";
         for (const item of kakuritu) {
             if (randomNum < item.weight) {
                 selectedResult = item.name;
+                message = item.mess;
                 break;
             }
             randomNum -= item.weight;
         }
 
         // 画面に表示
-        res.textContent = selectedResult;});
-
+        res.textContent = selectedResult;
+        msg.textContent = message;
+        });
     </script>
 </body>
 </html>
